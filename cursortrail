@@ -1,6 +1,7 @@
 getgenv().CursorTrailToggleKey = Enum.KeyCode.T
 getgenv().CursorTrailColor = Color3.fromRGB(255,0,0)
 getgenv().CursorTrailTransparency = 0.5
+getgenv().CursorTrailSize = 4
 getgenv().CursorTrailCursor = "rbxassetid://10457821495"
 
 local plr = game.Players.LocalPlayer
@@ -31,7 +32,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
     trail.BackgroundTransparency = getgenv().CursorTrailTransparency
     trail.BorderSizePixel = 0
     trail.Position = UDim2.new(0, Mouse.X, 0, Mouse.Y)
-    trail.Size = UDim2.new(0, 4, 0, 4)
+    trail.Size = UDim2.new(0, getgenv().CursorTrailSize, 0, getgenv().CursorTrailSize)
     trail.Text = ""
     local uic = Instance.new("UICorner", trail)
     uic.CornerRadius = UDim.new(0,10)
