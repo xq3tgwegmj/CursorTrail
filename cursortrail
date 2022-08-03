@@ -18,7 +18,7 @@ game:GetService("UserInputService").InputBegan:Connect(function(i,p)
     end
 end)
 
-if getgenv().CursorTrailCursor ~= "" and getgenv().CursorTrailCursor ~= nil then
+if getgenv().CursorTrailCursor ~= "" or getgenv().CursorTrailCursor ~= nil then
     getgenv().currentCursor = getgenv().CursorTrailCursor
     Mouse.Icon = getgenv().CursorTrailCursor
 end
