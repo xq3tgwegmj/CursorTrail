@@ -2,6 +2,7 @@ getgenv().CursorTrailToggleKey = Enum.KeyCode.T
 getgenv().CursorTrailColor = Color3.fromRGB(255,0,0)
 getgenv().CursorTrailTransparency = 0.5
 getgenv().CursorTrailSize = 4
+getgenv().CursorTrailLength = 0.05
 getgenv().CursorTrailCursor = "rbxassetid://10457821495" --image id
 
 local plr = game.Players.LocalPlayer
@@ -42,7 +43,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
             if trail.BackgroundTransparency == 1 then
                 trail:Destroy()
             end
-            wait(0.01)
+            wait(getgenv().CursorTrailLength)
         end
     end))
 end)
