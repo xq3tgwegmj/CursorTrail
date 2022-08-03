@@ -1,0 +1,47 @@
+getgenv().CursorTrailToggleKey = Enum.KeyCode.T
+getgenv().CursorTrailColor = Color3.fromRGB(255,0,0)
+getgenv().CursorTrailTransparency = 0.5
+getgenv().CursorTrailCursor = "rbxassetid://10457821495"
+
+local plr = game.Players.LocalPlayer
+local Mouse = plr:GetMouse()
+local gui = Instance.new("ScreenGui")
+gui.ResetOnSpawn = false
+gui.Name = ""
+gui.Parent = plr.PlayerGui
+game:GetService("UserInputService").InputBegan:Connect(function(i,p)
+    if not p then
+        if i.KeyCode == getgenv().CursorTrailToggleKey then
+            gui.Enabled = not gui.Enabled
+        end
+    end
+end)
+
+if getgenv().CursorTrailCursor ~= "" and getgenv().CursorTrailCursor ~= nil then
+    getgenv().currentCursor = getgenv().CursorTrailCursor
+    Mouse.Icon = getgenv().CursorTrailCursor
+end
+--game:GetService("UserInputService").MouseIconEnabled = false
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if not gui.Enabled then return end
+    
+    local trail = Instance.new("TextLabel", gui)
+    trail.BackgroundColor3 = getgenv().CursorTrailColor
+    trail.BackgroundTransparency = getgenv().CursorTrailTransparency
+    trail.BorderSizePixel = 0
+    trail.Position = UDim2.new(0, Mouse.X, 0, Mouse.Y)
+    trail.Size = UDim2.new(0, 4, 0, 4)
+    trail.Text = ""
+    local uic = Instance.new("UICorner", trail)
+    uic.CornerRadius = UDim.new(0,10)
+    coroutine.resume(coroutine.create(function()
+        for i = getgenv().CursorTrailTransparency, 1, 0.1 do
+            trail.BackgroundTransparency = i
+            if trail.BackgroundTransparency == 1 then
+                trail:Destroy()
+            end
+            wait(0.01)
+        end
+    end))
+end)
