@@ -1,10 +1,8 @@
-if not getgenv().CursorTrailToggleKey then
-    getgenv().CursorTrailToggleKey = Enum.KeyCode.T
-    getgenv().CursorTrailColor = Color3.fromRGB(255,0,0)
-    getgenv().CursorTrailTransparency = 0.5
-    getgenv().CursorTrailSize = 4
-    getgenv().CursorTrailCursor = "rbxassetid://10457821495"
-end
+getgenv().CursorTrailToggleKey = Enum.KeyCode.T
+getgenv().CursorTrailColor = Color3.fromRGB(255,0,0)
+getgenv().CursorTrailTransparency = 0.5
+getgenv().CursorTrailSize = 4
+getgenv().CursorTrailCursor = "rbxassetid://10457821495"
 
 local plr = game.Players.LocalPlayer
 local Mouse = plr:GetMouse()
